@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import SearchAppBar from './components/SearchAppBar';
+import HomePage from './components/HomePage';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <SearchAppBar />
+        <HomePage />
+        <Stack spacing={2}>
+          <Box sx={{display:'flex', justifyContent:'center'}}>
+            <Pagination count={5} />
+          </Box>
+        </Stack>
+        </ThemeProvider>
     </div>
   );
 }
